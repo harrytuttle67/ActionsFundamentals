@@ -1,4 +1,4 @@
-name: My awesome first workflow
+name: GitHub Actions Demo
 on:
   push:
     branches:
