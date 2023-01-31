@@ -17,7 +17,7 @@ jobs:
     name: Build job
     runs-on: ubuntu-latest
     steps:
-      - run: I'm building ...
+      - run: echo "I'm building ..."
   Test:
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'
@@ -26,3 +26,12 @@ jobs:
     steps:
     - run: echo "🧪 Testing..."
 
+  Load-Test:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    needs: Build
+    environment: Load-Test
+    steps:
+    - run: |
+        echo "🧪 Testing..."
+        sleep 15
