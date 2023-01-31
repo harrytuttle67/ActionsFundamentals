@@ -14,15 +14,15 @@ on:
         required: true
 jobs:
   Build:
-    name: First job
+    name: Build job
     runs-on: ubuntu-latest
     steps:
-      - name: say hellp
-        run: echo Hello, world!
+      - run: I'm building ...
   Test:
     runs-on: ubuntu-latest
+    if: github.event_name == "workflow_dispatch"
     needs: [Build]
     environment: Test
     steps:
-    - run: echo "Testing"
+    - run: echo "🧪 Testing..."
 
