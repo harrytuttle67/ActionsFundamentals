@@ -13,8 +13,15 @@ on:
   workflow_dispatch:
     
 jobs:
+  Scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: KICS Github Action
+        uses: Checkmarx/kics-github-action@v1.5
   Build:
     runs-on: ubuntu-latest
+    needs:
+      - Scan
     steps:
       - run: echo "The job was triggered by event ${{ github.event_name }}"
       - run: echo "... from branch ${{ github.ref }}"
